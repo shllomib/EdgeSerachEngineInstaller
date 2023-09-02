@@ -19,6 +19,7 @@ namespace EdgeSerachEngineInstaller
             SearchEngineName = DefaultEngineName;
             SearchEngineShortcut = DefaultEngineShortcut;
             SearchEngineURL = DefaultEngineUrl;
+            IsAddEnabled = true;
         }
 
         #endregion Constructor
@@ -81,6 +82,20 @@ namespace EdgeSerachEngineInstaller
             }
         }
 
+        private bool isAddEnabled;
+        public bool IsAddEnabled
+        {
+            get
+            {
+                return isAddEnabled;
+            }
+            set
+            {
+                isAddEnabled = value;
+                OnPropertyChanged(nameof(IsAddEnabled));
+            }
+        }
+
         #endregion Naming
 
         #region Commands
@@ -99,10 +114,11 @@ namespace EdgeSerachEngineInstaller
                 return addCommand;
             }
         }
-
         private async void AddExecute(object _)
         {
+            IsAddEnabled = false;
             await Install();
+            IsAddEnabled = true;
         }
 
         #endregion Commands->Add

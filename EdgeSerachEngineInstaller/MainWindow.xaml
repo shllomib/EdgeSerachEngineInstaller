@@ -141,6 +141,9 @@
                 <Button Margin="0 0 5 0"
                         Style="{StaticResource buttonStyle}"
                         Command="{Binding AddCommand}"
+                        IsEnabled="{Binding IsAddEnabled,
+                                            Mode=OneWay,
+                                            UpdateSourceTrigger=PropertyChanged}"
                         Background="#0078d4"
                         Foreground="White"
                         Content="Add"
